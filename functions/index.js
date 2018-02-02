@@ -64,7 +64,8 @@ function byDefaultIntent(app) {
         if (app.getContext("google_assistant_welcome")) {
             app.tell(response);
         } else {
-            app.ask(response);
+            app.tell(response);
+            // app.ask(response);
         }
     }).catch(err => {
         console.error(err);
@@ -111,7 +112,8 @@ function byDateIntent(app) {
             if (app.getContext("google_assistant_welcome")) {
                 app.tell(response);
             } else {
-                app.ask(response);
+                app.tell(response);
+                // app.ask(response);
             }
         }).catch(err => {
             console.error(err);
@@ -119,12 +121,12 @@ function byDateIntent(app) {
         });
     } catch (e) {
         if (e.message === "InvalidDate") {
-            app.tell({
+            app.ask({
                 speech: `<speak>A date provided was invalid. Please try your request again using a valid date like <say-as interpret-as="date" format="dm">09-02</say-as></speak>`,
                 displayText: `A date provided was invalid. Please try your request again using a valid date like February 9th.`
             });
         } else if (e.message === "UnknownDate") {
-            app.tell(`I sometimes have problems with dates.  Try to give a specific date like February 9th or a relative day like yesterday or last Thursday.`);
+            app.ask(`I sometimes have problems with dates.  Try to give a specific date like February 9th or a relative day like yesterday or last Thursday.`);
         } else {
             app.tell(`There was a problem communicating with the Virginia Department of Game and Inland Fisheries.`);
         }
@@ -135,7 +137,7 @@ function byDateRange(app, startDate, endDate) {
     console.log(`Stockings by Date Range received`);
 
     if (startDate.isAfter(endDate)) {
-        app.tell(`An invalid date range has been provided.  Please use a valid date range.`);
+        app.ask(`An invalid date range has been provided.  Please use a valid date range.`);
         return;
     }
 
@@ -166,7 +168,8 @@ function byDateRange(app, startDate, endDate) {
         if (app.getContext("google_assistant_welcome")) {
             app.tell(response);
         } else {
-            app.ask(response);
+            app.tell(response);
+            // app.ask(response);
         }
     }).catch(err => {
         console.error(err);
@@ -207,7 +210,8 @@ function byCountyIntent(app) {
         if (app.getContext("google_assistant_welcome")) {
             app.tell(response);
         } else {
-            app.ask(response);
+            app.tell(response);
+            // app.ask(response);
         }
     }).catch(err => {
         console.error(err);
